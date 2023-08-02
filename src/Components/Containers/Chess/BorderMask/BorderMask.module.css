@@ -1,0 +1,8 @@
+.mask{
+    position: absolute;  
+}
+.mask *{
+    border: none;
+    background-color: transparent;
+}
+

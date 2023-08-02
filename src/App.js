@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import GamePage from "./Components/Psges/GamePage/GamePage";
+import BeginPage from "./Components/Psges/BeginPage/BeginPage";
+import useStore from "./store/store";
+import React from "react";
+import { Route } from "react-router-dom/cjs/react-router-dom";
 function App() {
+  let pointSize = useStore((state) => state.pointSize);
+  document.documentElement.style.fontSize = `${
+    (window.screen.availHeight - 250) / pointSize
+  }px`;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Route path={["/", "/start"]} exact component={BeginPage} />
+      <Route path="/game" exact component={GamePage} />
     </div>
   );
 }

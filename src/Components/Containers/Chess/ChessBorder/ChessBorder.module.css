@@ -1,0 +1,13 @@
+.chessborder{
+    counter-reset: total;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color:#f7c36f;
+    box-sizing: content-box;
+    border:1.5px solid #000000;
+    border-left: 2.5px solid #000000;
+    border-top:2.5px solid #000000;
+    margin:0 auto
+}
