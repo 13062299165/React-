@@ -1,7 +1,9 @@
 import React, { useCallback, useMemo } from "react";
 import ChessCube from "../ChessCube/ChessCube";
 import classes from "./ChessBorder.module.css";
+import useStore from "../../../../store/store";
 export default function ChessBorder({ size, isShow }) {
+  let game=useStore(state=>state.game)
   //不同尺寸的棋盘距离边界的格子数不同
   let chessborder = useMemo(() => {
     return new Array(size * size).fill(0);
@@ -37,6 +39,7 @@ export default function ChessBorder({ size, isShow }) {
             key={index}
             index={index}
             isShow={isShow}
+            piececode={game[index]}
           />
         ))}
       </ul>

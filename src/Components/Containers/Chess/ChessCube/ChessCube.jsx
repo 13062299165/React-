@@ -1,11 +1,10 @@
 import classes from "./ChessCube.module.css";
 import ChessPiece from "../ChessPiece/ChessPiece";
-import React, { useMemo } from "react";
+import React, { memo, useMemo } from "react";
 import useStore from "../../../../store/store";
 
-export default function ChessCube({ index, isStar, isShow = true }) {
+export default memo(function ChessCube({ index, isStar, isShow = true ,piececode=0}) {
   // TODO: 没变化的使用const
-  const game = useStore((state) => state.game);
   const pointSize = useStore((state) => state.pointSize);
   const putchess = useStore((state) => state.putchess);
   const colormap=useMemo(()=>{
@@ -23,7 +22,7 @@ export default function ChessCube({ index, isStar, isShow = true }) {
     //若棋子成功放置，内部自动改变棋子颜色
     putchess({ x, y });
   }
-
+  console.log(222)
   return (
     <>
       {
@@ -44,7 +43,7 @@ export default function ChessCube({ index, isStar, isShow = true }) {
             <ChessPiece
               type={
                 //  TODO: 不嵌套三元 考虑使用map 常量提取
-                 game[index] === 0 ? "" : colormap.get(game[index])
+                 piececode === 0 ? "" : colormap.get(piececode)
               }
             />
           </li>
@@ -53,3 +52,4 @@ export default function ChessCube({ index, isStar, isShow = true }) {
     </>
   );
 }
+) 
